@@ -1,0 +1,56 @@
+# MATLAB specific
+*.asv
+*.m~
+*.mat
+*.fig
+*.mdl.autosave
+slprj/
+sccprj/
+codegen/
+*.slxc
+*.mexmaci64
+*.mexw64
+*.mexa64
+
+# MATLAB autosave
+*.asv
+*.m~
+*.autosave
+
+# MATLAB Simulink
+*.slx.autosave
+*.mdlp
+*.slxp
+*.sldd
+*.slxc
+*.mlx
+
+# MATLAB Project
+resources/project/*
+*.prj
+
+# Arduino
+*.hex
+*.elf
+*.eep
+*.bin
+*.lss
+*.sym
+*.map
+
+# Arduino IDE
+*.db
+*.pde.bak
+*.ino.bak
+build/
+
+# General
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*~
+
+# Excel temporary files
+~$*.xlsx
+~$*.xls 
