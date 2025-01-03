@@ -38,10 +38,40 @@ void setup()
         while (1)
             ; // Stop if failed
     }
-    delay(DELAY_TIME); // 5s delay after init
+    // delay(DELAY_TIME); // 5s delay after init
     Serial.println("Post-init delay complete");
 
     // !! SD is still in high power mode in most cases until write is complete !!
+
+    // Check if non-existent file exists to reduce power consumption
+    Serial.println("\nTest: Checking non-existent file...");
+#if defined(ESP32)
+    SD.exists("/x.txt"); // ESP32 requires leading slash
+#else
+    SD.exists("x.txt"); // Standard path without leading slash
+#endif
+    delay(DELAY_TIME);
+    Serial.println("Test delay complete");
+
+    // Test opening and closing root directory
+    Serial.println("\nTest: Opening root directory...");
+#if defined(ESP32)
+    File root = SD.open("/"); // ESP32 requires leading slash
+#else
+    File root = SD.open("/"); // Standard root path
+#endif
+    if (root)
+    {
+        Serial.println("Root directory opened successfully");
+        root.close();
+        Serial.println("Root directory closed");
+    }
+    else
+    {
+        Serial.println("Failed to open root directory");
+    }
+    delay(DELAY_TIME);
+    Serial.println("Test delay complete");
 
     // Create and write to test file
     Serial.print("Opening file for writing...");
